@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
     }
 
     members.push(newMember);
-    res.json(members);
+    res.redirect('/');
 });
 
 // Update member
@@ -59,7 +59,7 @@ router.delete('/:id', (req, res) => {
     const found = members.some(idFilter(req));
   
     if (found) {
-      res.json({
+      res.json({ 
         msg: 'Member deleted',
         members: members.filter(member => !idFilter(req)(member))
       });
